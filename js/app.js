@@ -53,6 +53,37 @@ Enemy.prototype.render = function() {
 // This class requires an update(), render() and
 // a handleInput() method.
 
+var Player = function(x, y){
+    this.sprite = 'images/char-boy.png';
+    this.x = x;
+    this.y = y;
+}
+Player.prototype.update = function(dt){
+
+}
+Player.prototype.render = function(){
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+}
+
+Player.prototype.handleInput = function(input){
+    if (input == 'left' && this.x > 0){
+        this.x -= 101;
+    }
+    if (input == 'right' && this.x < 400){
+        this.x += 101;
+    }
+    if (input == 'up' && this.y > 0){
+        this.y -= 90;
+    }
+    if (input == 'down' && this.y < 400){
+        this.y += 90;
+    }
+    if (this.y == -50){
+        setTimeout(() => this.y = 400, 600);
+        
+    }
+    
+}
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
