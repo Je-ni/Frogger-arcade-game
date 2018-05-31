@@ -35,6 +35,15 @@ Enemy.prototype.update = function(dt) {
     }
 };
 
+//to handle collision
+Enemy.prototype.collide = function(){
+    if ((player.y < this.y + 40) && (player.y > this.y - 40) &&
+    (player.x < this.x + 51) && (player.x > this.x - 51)){
+        player.y = 400;
+        player.x = 202;
+    }
+}
+
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
