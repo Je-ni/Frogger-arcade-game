@@ -42,7 +42,7 @@ Enemy.prototype.collide = function(){
     (player.x < this.x + 51) && (player.x > this.x - 51)){
         player.y = 400;
         player.x = 202;
-        player.score == 0 ? player.score = 0 : player.score -=5;
+        player.score == 0 ? player.score = 0 : player.score -=15;
         document.getElementById('score').innerHTML = player.score;
 
     }
@@ -65,31 +65,34 @@ var Player = function(x, y, score){
     document.getElementById('score').innerHTML = this.score;
 }
 Player.prototype.update = function(dt){
-
+    
 }
 Player.prototype.render = function(){
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 }
 
 Player.prototype.handleInput = function(input){
-    if (input == 'left' && this.x > 0){
-        this.x -= 101;
+    if(this.y > 0){
+        if (input === 'left' && this.x > 0){
+            this.x -= 101;
+        }
+        if (input === 'right' && this.x < 400){
+            this.x += 101;
+        }
+        if (input === 'up' && this.y > 0){
+            this.y -= 90;
+        }
+        if (input === 'down' && this.y < 400){
+            this.y += 90;
+        }
+        if(this.y < 0){
+            this.score += 10;
+            document.getElementById('score').innerHTML = this.score;
+            setTimeout(() => this.y = 400, 200); 
+        }
     }
-    if (input == 'right' && this.x < 400){
-        this.x += 101;
-    }
-    if (input == 'up' && this.y > 0){
-        this.y -= 90;
-    }
-    if (input == 'down' && this.y < 400){
-        this.y += 90;
-    }
-    if (this.y == -50){
-        this.score += 10;
-        document.getElementById('score').innerHTML = this.score;
-        setTimeout(() => this.y = 400, 600);
-        
-    }
+    
+    
     
 }
 
