@@ -1,3 +1,12 @@
 body {
     text-align: center;
+    font-family: Handlee, Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+header {
+    display: flex;
+    justify-content: space-around;
+    height: 20px;
+}
+header h2 {
+    font-weight: bolder;
 }

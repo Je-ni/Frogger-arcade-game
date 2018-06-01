@@ -1,3 +1,4 @@
+
 // Enemies our player must avoid
 var Enemy = function(x, y, speed) {
     // Variables applied to each of our instances go here,
@@ -41,6 +42,9 @@ Enemy.prototype.collide = function(){
     (player.x < this.x + 51) && (player.x > this.x - 51)){
         player.y = 400;
         player.x = 202;
+        player.score == 0 ? player.score = 0 : player.score -=5;
+        document.getElementById('score').innerHTML = player.score;
+
     }
 }
 
@@ -53,10 +57,12 @@ Enemy.prototype.render = function() {
 // This class requires an update(), render() and
 // a handleInput() method.
 
-var Player = function(x, y){
+var Player = function(x, y, score){
     this.sprite = 'images/char-boy.png';
     this.x = x;
     this.y = y;
+    this.score = score;
+    document.getElementById('score').innerHTML = this.score;
 }
 Player.prototype.update = function(dt){
 
@@ -79,6 +85,8 @@ Player.prototype.handleInput = function(input){
         this.y += 90;
     }
     if (this.y == -50){
+        this.score += 10;
+        document.getElementById('score').innerHTML = this.score;
         setTimeout(() => this.y = 400, 600);
         
     }
@@ -92,7 +100,7 @@ Player.prototype.handleInput = function(input){
 var allEnemies = [new Enemy(0, 60, 10*Math.random()+90),
     new Enemy(0, 145, 10*Math.random()+90),
     new Enemy(0, 225, 10*Math. random()+90)];
-var player = new Player(202, 400);
+var player = new Player(202, 400, 0);
 
 
 // This listens for key presses and sends the keys to your
