@@ -4,9 +4,10 @@ body {
 }
 header {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     height: 20px;
 }
-header h2 {
+header .head {
     font-weight: bolder;
+    width: 0;
 }

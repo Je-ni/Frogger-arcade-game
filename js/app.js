@@ -42,7 +42,7 @@ Enemy.prototype.collide = function(){
     (player.x < this.x + 51) && (player.x > this.x - 51)){
         player.y = 400;
         player.x = 202;
-        player.score == 0 ? player.score = 0 : player.score -=15;
+        player.score <= 0 ? player.score = 0 : player.score -=15;
         document.getElementById('score').innerHTML = player.score;
 
     }
@@ -90,10 +90,7 @@ Player.prototype.handleInput = function(input){
             document.getElementById('score').innerHTML = this.score;
             setTimeout(() => this.y = 400, 200); 
         }
-    }
-    
-    
-    
+    }    
 }
 
 // Now instantiate your objects.
