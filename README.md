@@ -9,4 +9,4 @@ It's really simple. Try to cross over to the water without getting bitten by the
 Use the arrow keys for navigation.
 **Goodluck**
 
-Play game [here] ()
+Play game [here](https://je-ni.github.io/Frogger-arcade-game/)
